@@ -8,6 +8,13 @@ void ofApp::setup(){
 
 //--------------------------------------------------------------
 void ofApp::update(){
+
+  int mouseX;
+  int mouseY;
+
+  mouseX = ofGetMouseX();
+  mouseY = ofGetMouseY();
+
   float deltaTime = ofGetLastFrameTime();
 
   particles.erase(std::remove_if(particles.begin(), particles.end(), [](const Particle& particle) {
@@ -15,10 +22,24 @@ void ofApp::update(){
 }), particles.end());
 
 
-  for (auto& particle : particles)
+  // for (int i = 0; i < particles.size(); i++) {
+  //       for (int j = i + 1; j < particles.size(); j++) {
+  //           if (particles[i].checkCollision(particles[j])) {
+  //             particles[i].followMousePos(mouseX, mouseY);
+  //           }
+  //       }
+  //   }
+
+  for (int i = 0; i < particles.size(); i++)
   {
-    particle.update(deltaTime);
+    particles[i].moveCenter(particles);
+    // particles[i].followMousePos(mouseX, mouseY);
   }
+  // for (auto& particle : particles)
+  // {
+  //   particle.followMousePos(mouseX, mouseY);
+  //   // particle.moveRight(deltaTime);
+  // }
 }
 
 //--------------------------------------------------------------

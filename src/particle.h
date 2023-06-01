@@ -8,7 +8,12 @@ class Particle {
     : x(posX), y(posY), size(particleSize), velocityX(30.0f), velocityY(30.0f)
     {}
 
-  void update(float deltaTime);
+  // void update(float deltaTime);
+  void moveRight(float deltaTime);
+  // void moveCenter(vector<Particle>& particles);
+  void moveCenter(std::vector<Particle>& particles);
+  void followMousePos(int mouseX, int mouseY);
+  bool checkCollision(const Particle& other, int moveX, int moveY) const;
   void draw() const;
 
   // bool isParticleOutsideWindow() const;
